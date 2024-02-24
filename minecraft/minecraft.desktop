@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Name=Minecraft
+Comment=Tlauncher
+Exec=java -jar /home/asuka/.apps/minecraft.jar
+Icon=minecraft
+Terminal=false
+Type=Application
+Categories=Games;
