@@ -49,4 +49,3 @@ if [ $? -eq 0 ]
   then echo -e "\033[32m Sucessfully Installed TLauncher, you may now open it from your app launcher.\033[0m"
   else echo -e "\033[033m Error in Installation, see logs at $LogFile.\033[0m" && exit
 fi
-
