@@ -73,7 +73,7 @@ sudo systemctl enable --now libvirtd.service
 sudo echo 'unix_sock_group = "libvirt"
 unix_sock_rw_perms = "0770"' | sudo tee -a /etc/libvirt/libvirtd.conf > /dev/null
 sudo usermod -aG libvirt $USER
-sudo systemctl restart libvirtd.service
+sudo systemctl enable --now libvirtd.service
 
 ## Finish
 if [ $? -eq 0 ]
