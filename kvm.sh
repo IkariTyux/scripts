@@ -13,6 +13,9 @@ if [ $VirtEnable -gt 0 ]
   else echo -e "\033[033m Virtualisation not enabled. Enable it in the BIOS\033[0m" && exit
 fi
 
+## Define Variables
+Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
+
 
 # Install the requiered packages
 case $Distro in
