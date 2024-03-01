@@ -6,6 +6,7 @@ figlet "KVM / QEMU" | lolcat
 Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
 LogFile="/home/$USER/.kvm_install.log"
 Date=$(date +"%Y-%m-%d - %H:%M:S")
+
 ## Check if Virtualisation is enabled 
 VirtEnable=$(grep -Ec '(vmx|svm)' /proc/cpuinfo)
 if [ $VirtEnable -gt 0 ]
@@ -73,3 +74,9 @@ sudo echo 'unix_sock_group = "libvirt"
 unix_sock_rw_perms = "0770"' | sudo tee -a /etc/libvirt/libvirtd.conf > /dev/null
 sudo usermod -aG libvirt $USER
 sudo systemctl restart libvirtd.service
+
+## Finish
+if [ $? -eq 0 ]
+  then echo -e "\033[32m Sucessfully installed KVM.\033[0m"
+  else echo -e "\033[033m Error in Installation, see logs at $LogFile.\033[0m" && exit
+fi
