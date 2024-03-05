@@ -6,17 +6,14 @@ figlet "KVM / QEMU" | lolcat
 Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
 LogFile="/home/$USER/.kvm_install.log"
 Date=$(date +"%Y-%m-%d - %H:%M:S")
-
 ## Check if Virtualisation is enabled 
 VirtEnable=$(grep -Ec '(vmx|svm)' /proc/cpuinfo)
 if [ $VirtEnable -gt 0 ]
   then echo -e "\033[32m Virtualisation is enabled\033[0m"
   else echo -e "\033[033m Virtualisation not enabled. Enable it in the BIOS\033[0m" && exit
 fi
-
-## Define Variables
+# Check Distro
 Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
-
 
 # Install the requiered packages
 case $Distro in
@@ -34,48 +31,47 @@ case $Distro in
     ;;
 
   debian)
-    echo -n "unknown"
+    sudo apt update && sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
     ;;
 
   ubuntu)
-    echo -n "unknown"
+    sudo apt update && sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
     ;;
 
   linuxmint)
-    echo -n "unknown"
+    sudo apt update && sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
     ;;
 
   pop)
-    sudo apt update && apt install
+    sudo apt update && sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
     ;;
 
   fedora)
-    echo -n "unknown"
+    sudo dnf update && sudo dnf install qemu-kvm libvirt virt-install bridge-utils libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager -y  
     ;;
 
   rhel)
-    echo -n "unknown"
+    sudo dnf update && sudo dnf install qemu-kvm libvirt virt-install bridge-utils libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager -y  
+    ;;
+
+  opensuse-leap)
+    echo -n "opensuse-leap"
     ;;
 
   opensuse-tumbleweed)
-    echo -n "unknown"
-    ;;
-
-  opensuse-tumbleweed)
-    echo -n "unknown"
+    echo -n "opensuse-tumbleweed"
     ;;
 
 esac
 
-
-## Start Libvirtd
+# Start Libvirtd
 sudo systemctl enable --now libvirtd.service
 sudo echo 'unix_sock_group = "libvirt"
 unix_sock_rw_perms = "0770"' | sudo tee -a /etc/libvirt/libvirtd.conf > /dev/null
 sudo usermod -aG libvirt $USER
-sudo systemctl restart libvirtd.service
+sudo systemctl enable --now libvirtd.service
 
-## Finish
+# Finish
 if [ $? -eq 0 ]
   then echo -e "\033[32m Sucessfully installed KVM.\033[0m"
   else echo -e "\033[033m Error in Installation, see logs at $LogFile.\033[0m" && exit
