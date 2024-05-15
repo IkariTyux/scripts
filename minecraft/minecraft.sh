@@ -5,7 +5,7 @@ figlet Minecraft | lolcat
 # Define Variables
 Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
 LogFile="/home/$USER/.minecraft_install.log"
-TlauncherLocation="/home/$USER/.apps"
+TlauncherLocation="/home/$USER/.local/bin/"
 TlauncherURL="https://tlauncher.org/jar"
 TLauncherFile=$(basename *.jar)
 Date=$(date +"%Y-%m-%d - %H:%M:S")
