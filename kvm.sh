@@ -15,7 +15,7 @@ fi
 # Check Distro
 Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
 
-# Install the requiered packages
+# Install the required packages
 case $Distro in
 
   arch)
@@ -61,7 +61,6 @@ case $Distro in
   opensuse-tumbleweed)
     echo -n "opensuse-tumbleweed"
     ;;
-
 esac
 
 # Start Libvirtd
@@ -73,6 +72,6 @@ sudo systemctl enable --now libvirtd.service
 
 # Finish
 if [ $? -eq 0 ]
-  then echo -e "\033[32m Sucessfully installed KVM.\033[0m"
+  then echo -e "\033[32m Successfully installed KVM.\033[0m"
   else echo -e "\033[033m Error in Installation, see logs at $LogFile.\033[0m" && exit
 fi
