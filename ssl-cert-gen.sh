@@ -2,7 +2,7 @@
 
 ### Define variables
 ## App name and domain
-App=$1 # name of the app (dlower case, no spaces, only "-" or "_").
+App=$1 # name of the app (lower case, no spaces, only "-" or "_").
 Domain=$2 # Fully qualified Domain name
 
 ## Organisation
