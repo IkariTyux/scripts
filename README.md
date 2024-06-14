@@ -8,5 +8,5 @@ Here are explained the usage of scripts that needs arguments
 ### ssl-cert-gen
 **Usage :**
 ```bash
-./ssl-cert-gen <app-name> <fully-qualified-domain.name>
+./ssl-cert-gen.sh <app-name> <fully-qualified-domain.name>
 ```
