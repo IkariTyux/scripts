@@ -17,7 +17,7 @@ $Date\
 
 " >> $LogFile
 
-# Geting the jar file ready
+# Getting the jar file ready
 download_minecraft () {
 curl https://tlauncher.org/jar -L --output TLauncher.zip
 unzip -o TLauncher.zip > /dev/null
@@ -43,6 +43,6 @@ cp minecraft.desktop /home/$USER/.local/share/applications/minecraft.desktop
 
 ## Finish
 if [ $? -eq 0 ]
-  then echo -e "\033[32m Sucessfully Installed TLauncher, you may now open it from your app launcher.\033[0m"
+  then echo -e "\033[32m Successfully Installed TLauncher, you may now open it from your app launcher.\033[0m"
   else echo -e "\033[033m Error in Installation, see logs at $LogFile.\033[0m" && exit
 fi
