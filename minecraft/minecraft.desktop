@@ -2,7 +2,7 @@
 [Desktop Entry]
 Name=Minecraft
 Comment=Tlauncher
-Exec=java -jar /home/shinji/.local/bin/minecraft.jar
+Exec=java -jar ~/.local/bin/minecraft.jar
 Icon=minecraft
 Terminal=false
 Type=Application
