@@ -14,7 +14,7 @@ Organisation="Nerv" # The name of the organisation. Can be anything
 OrgUnit="IT Department" # Whatever you want it to be
 
 ## Paths
-SSLPath="/home/$USER/Downloads/SSL"
+SSLPath="/home/$USER/.SSL"
 AppPath="$SSLPath/$App"
 
 ### Creation of the folder that stores the cert.
