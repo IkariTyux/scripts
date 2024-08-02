@@ -2,7 +2,7 @@
 
 ### Define variables
 ## App name and domain
-App=$1 # name of the app (dlower case, no spaces, only "-" or "_").
+App=$1 # name of the app (lower case, no spaces, only "-" or "_").
 Domain=$2 # Fully qualified Domain name
 
 ## Organisation
@@ -24,7 +24,7 @@ echo ""
 
 ### Function that requests the certificate using openssl
 # Source: https://linuxize.com/post/creating-a-self-signed-ssl-certificate
-# The -subj parameters use the Organisation variables
+# The -subj parameters uses the Organisation variables
 # It stores the certificate and key in the folder named after the $App variable
 cert_gen () {
 openssl req -newkey rsa:4096 \
