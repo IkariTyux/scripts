@@ -19,7 +19,7 @@ $Date\
 
 # Getting the jar file ready
 download_minecraft () {
-curl https://tlauncher.org/jar -L --output TLauncher.zip
+curl -s https://tlauncher.org/jar -L --output TLauncher.zip
 unzip -o TLauncher.zip > /dev/null
 mv $TLauncherFile $TlauncherLocation/minecraft.jar
 rm -f TLauncher.zip README-EN.txt README-RUS.txt
@@ -39,7 +39,7 @@ elif [ "$Distro" = "suse" ]
 fi
 
 # Copy .desktop file
-curl https://raw.githubusercontent.com/IkariTyux/scripts/main/files/minecraft.desktop > /home/$USER/.local/share/applications/minecraft.desktop
+curl -s https://raw.githubusercontent.com/IkariTyux/scripts/main/files/minecraft.desktop > /home/$USER/.local/share/applications/minecraft.desktop
 
 ## Finish
 if [ $? -eq 0 ]
