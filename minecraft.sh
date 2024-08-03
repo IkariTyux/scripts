@@ -5,8 +5,7 @@ figlet Minecraft | lolcat
 # Define Variables
 Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
 LogFile="/home/$USER/.minecraft_install.log"
-TlauncherLocation="/home/$USER/.local/bin/"
-TlauncherURL="https://tlauncher.org/jar"
+TlauncherLocation="/home/$USER/.local/bin"
 TLauncherFile=$(basename *.jar)
 Date=$(date +"%Y-%m-%d - %H:%M:S")
 
@@ -19,10 +18,10 @@ $Date\
 
 # Getting the jar file ready
 download_minecraft () {
-curl -s https://tlauncher.org/jar -L --output TLauncher.zip
-unzip -o TLauncher.zip > /dev/null
-mv $TLauncherFile $TlauncherLocation/minecraft.jar
-rm -f TLauncher.zip README-EN.txt README-RUS.txt
+curl -s -L https://tlauncher.org/jar -o tmp.zip
+unzip -j -o tmp.zip -d $TlauncherLocation > /dev/null
+mv $TlauncherLocation/$TLauncherFile $TlauncherLocation/minecraft.jar
+rm -f tmp.zip README-EN.txt README-RUS.txt
 }
 download_minecraft 2>> $LogFile
 
