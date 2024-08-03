@@ -39,7 +39,7 @@ elif [ "$Distro" = "suse" ]
 fi
 
 # Copy .desktop file
-cp minecraft.desktop /home/$USER/.local/share/applications/minecraft.desktop
+curl https://raw.githubusercontent.com/IkariTyux/scripts/main/files/minecraft.desktop > /home/$USER/.local/share/applications/minecraft.desktop
 
 ## Finish
 if [ $? -eq 0 ]
