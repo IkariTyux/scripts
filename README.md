@@ -10,3 +10,9 @@ Here are explained the scripts that need arguments.
 ```bash
 ./ssl-cert-gen.sh <app-name> <fully-qualified-domain.name>
 ```
+
+### yt-playlist
+**Usage :**
+```bash
+./yt-playlist.sh <url> <format>
+```
