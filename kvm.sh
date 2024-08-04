@@ -6,49 +6,38 @@ then
   exit
 fi
 
-figlet "KVM / QEMU" | lolcat
-
 # Define Variables
-LogFile="/home/$USER/.kvm_install.log"
-Date=$(date +"%Y-%m-%d - %H:%M:S")
+Distro=$(grep '^ID=' /etc/os-release | cut -d= -f2)
 ## Check if Virtualisation is enabled 
 VirtEnable=$(grep -Ec '(vmx|svm)' /proc/cpuinfo)
 if [ $VirtEnable -gt 0 ]
   then echo -e "\033[32m Virtualisation is enabled\033[0m"
   else echo -e "\033[033m Virtualisation not enabled. Enable it in the BIOS\033[0m" && exit
 fi
-# Check Distro
-Distro=$(grep '^ID=' /etc/os-release | cut -d= -f2)
+
 
 # Install the required packages
 case $Distro in
-
   arch|manjaro)
     pacman -Syy qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat 
     ;;
-
-  debian|ubuntu|linux-mint)
+  debian|ubuntu|linux-mint|pop)
     apt update &&  apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
     ;;
-
-  pop)
-    apt update &&  apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
-    ;;
-
   rhel|fedora)
     dnf update &&  dnf install qemu-kvm libvirt virt-install bridge-utils libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager -y  
     ;;
 esac
 
 # Start Libvirtd
-systemctl enable --now libvirtd.service
+systemctl enable libvirtd.service
 echo 'unix_sock_group = "libvirt"
 unix_sock_rw_perms = "0770"' |  tee -a /etc/libvirt/libvirtd.conf > /dev/null
 usermod -aG libvirt $USER
-systemctl enable --now libvirtd.service
+systemctl start libvirtd.service
 
 # Finish
 if [ $? = 0 ]
   then echo -e "\033[32m Successfully installed KVM.\033[0m"
-  else echo -e "\033[033m Error in Installation, see logs at $LogFile.\033[0m"
+  else echo -e "\033[033m Error in Installation.\033[0m"
 fi
