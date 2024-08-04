@@ -1,8 +1,7 @@
-
 [Desktop Entry]
 Name=Minecraft
 Comment=Tlauncher
-Exec=java -jar ~/.local/bin/minecraft.jar
+Exec=java -jar /usr/local/bin/minecraft.jar
 Icon=minecraft
 Terminal=false
 Type=Application

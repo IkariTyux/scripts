@@ -9,7 +9,6 @@ fi
 figlet "KVM / QEMU" | lolcat
 
 # Define Variables
-Distro=$(cat /etc/os-release | grep -v BUILD_ID | grep ID | sed -s "s/ID=//g")
 LogFile="/home/$USER/.kvm_install.log"
 Date=$(date +"%Y-%m-%d - %H:%M:S")
 ## Check if Virtualisation is enabled 
