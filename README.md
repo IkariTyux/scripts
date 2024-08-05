@@ -12,7 +12,17 @@ Here are explained the scripts that need arguments.
 ```
 
 ### yt-playlist
+
 **Usage :**
 ```bash
 ./yt-playlist.sh <url> <format>
 ```
+
+**Supported formats**
+Audio
+- [x] flac
+- [ ] mp3
+
+Video
+- [x] mp4
+- [ ] mkv
