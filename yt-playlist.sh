@@ -4,7 +4,7 @@
 PlaylistUrl=$1
 Format=$2
 PlaylistName=$(curl $PlaylistUrl | awk -F '<meta property="og:title" content="' '{print $2}' | sed 's/\".*//g' | sed '/^[[:space:]]*$/d')
-Folder="/home/$USER/Music/$PlaylistName"
+Folder="/home/$USER/Videos/$PlaylistName"
 
 # Script
 mkdir -p $Folder
