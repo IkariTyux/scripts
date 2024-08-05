@@ -26,7 +26,8 @@ echo ""
 # Source: https://linuxize.com/post/creating-a-self-signed-ssl-certificate
 # The -subj parameters uses the Organisation variables
 # It stores the certificate and key in the folder named after the $App variable
-cert_gen () {
+
+## Requesting certificate
 openssl req -newkey rsa:4096 \
             -x509 \
             -sha256 \
@@ -35,11 +36,6 @@ openssl req -newkey rsa:4096 \
             -out $AppPath/cert.pem \ 
             -keyout $AppPath/key.pem \
             -subj "/C=$Country/ST=$State/L=$City/O=$Organisation/OU=$OrgUnit/CN=$Domain"
-}
-
-## Requesting certificate
-# Execution of the function
-cert_gen
 
 ### End of the script
 # checks if cert_gen ran successfully or not an outputs the result
