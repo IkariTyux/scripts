@@ -19,24 +19,22 @@ rm -f tmp.zip $TLauncherLocation/README-EN.txt $TLauncherLocation/README-RUS.txt
 
 # Installing Java
 case $Distro in
-  arch|manjaro|endevouros)
+  arch|manjaro)
     pacman -Sy
     pacman -S --noconfirm jre-openjdk
-      ;;
+    ;;
   debian|ubuntu|linuxmint|pop)
     apt update 
     apt install default-jre -y
-      ;;
+    ;;
   fedora|rhel)
     dnf update
     dnf install java-11-openjdk.x86_64 -y
-      ;;
-  opensuse-leap|opensuse-tumbleweed)
-    zypper --non-interactive install java-17-openjdk
-      ;;
+    ;;
   *)
     echo "Your distro isn't supported yet."
-      ;;
+    exit
+    ;;
 esac
 
 # Copy .desktop file
@@ -44,8 +42,8 @@ curl https://raw.githubusercontent.com/IkariTyux/scripts/main/files/tlauncher.de
 
 # Finish
 if [ $? -eq 0 ]
-  then echo -e "\033[32m Successfully Installed TLauncher, you may now open it from your app launcher.\033[0m"
-  else echo -e "\033[033m Error in Installation.\033[0m" && exit
+  then echo -e "\033[32m Successfully Installed TLauncher.\033[0m"
+    notify-send --icon=treminal --app-name=Bash 'TLauncher installed' 'TLauncher has been installed, check your app menu'
+  else echo -e "\033[033m Error in Installation.\033[0m"
 fi
 
-notify-send --icon=treminal --app-name=Bash 'TLauncher installed' 'TLauncher has been installed, check your app menu'

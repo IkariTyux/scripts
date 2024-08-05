@@ -19,13 +19,16 @@ fi
 # Install the required packages
 case $Distro in
   arch|manjaro)
-    pacman -Syy qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat 
+    pacman -Sy
+    pacman -S qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat 
     ;;
   debian|ubuntu|linux-mint|pop)
-    apt update &&  apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
+    apt update
+    apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
     ;;
   rhel|fedora)
-    dnf update &&  dnf install qemu-kvm libvirt virt-install bridge-utils libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager -y  
+    dnf update
+    dnf install qemu-kvm libvirt virt-install bridge-utils libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager -y  
     ;;
   *)
     echo "Your Distribution isn't supported yet"
