@@ -14,7 +14,7 @@ TLauncherFile=$(basename *.jar)
 # Getting the jar file ready
 curl -L https://tlauncher.org/jar -o tmp.zip
 unzip -j -o tmp.zip -d $TLauncherLocation
-mv $TLauncherLocation/$TLauncherFile $TLauncherLocation/tlaucnher.jar
+mv $TLauncherLocation/$TLauncherFile $TLauncherLocation/tlauncher.jar
 rm -f tmp.zip $TLauncherLocation/README-EN.txt $TLauncherLocation/README-RUS.txt
 
 # Installing Java
