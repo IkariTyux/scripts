@@ -4,7 +4,6 @@
 PlaylistUrl=$1
 Format=$2
 PlaylistName=$(curl $PlaylistUrl | awk -F '<meta property="og:title" content="' '{print $2}' | sed 's/\".*//g' | sed '/^[[:space:]]*$/d' | sed 's/Album - //g')
-PlalistCover=$(curl $PlaylistUrl)
 FolderMusic="/home/$USER/Music/$PlaylistName"
 FolderVideos="/home/$USER/Videos/$PlaylistName"
 
