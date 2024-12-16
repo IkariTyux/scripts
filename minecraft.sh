@@ -38,7 +38,7 @@ case $Distro in
 esac
 
 # Copy .desktop file
-curl https://raw.githubusercontent.com/IkariTyux/scripts/main/files/tlauncher.desktop > /usr/share/applications/tlauncher.desktop
+curl https://raw.githubusercontent.com/IkariTyux/scripts/main/files/minecraft.desktop > /usr/share/applications/minecraft.desktop
 
 # Finish
 if [ $? -eq 0 ]
