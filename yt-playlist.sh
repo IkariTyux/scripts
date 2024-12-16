@@ -39,7 +39,7 @@ rename " .$Format" ".$Format" "$Folder"/*.$Format
 
 if [ $? -eq 0 ]
   then echo -e "\033[32m Playlist successfully downloaded \033[0m"
-    notify-send --icon=terminal --app-name=Bash 'Playlist Downloaded' "Finished downloading $PlaylistName!"
-    ntfy "Playlist Downloaded" "Finished downloading $PlaylistName"
+    notify-send --icon=terminal --app-name=Bash 'Playlist Downloaded' "Finished downloading $PlaylistName !"
+    #ntfy "Playlist Downloaded" "Finished downloading $PlaylistName"
   else echo -e "\033[033m Error while downloading the playlist \033[0m" && exit
 fi
