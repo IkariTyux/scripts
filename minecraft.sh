@@ -42,8 +42,9 @@ curl https://raw.githubusercontent.com/IkariTyux/scripts/main/files/minecraft.de
 
 # Finish
 if [ $? -eq 0 ]
-  then echo -e "\033[32m Successfully Installed TLauncher.\033[0m"
-    notify-send --icon=terminal --app-name=Bash 'TLauncher installed' 'TLauncher has been installed, check your app menu'
-  else echo -e "\033[033m Error in Installation.\033[0m"
+then
+  echo -e "\033[32m Successfully Installed TLauncher.\033[0m"
+  notify-send --icon=terminal --app-name=Bash 'TLauncher installed' 'TLauncher has been installed, check your app menu'
+else
+  echo -e "\033[033m Error in Installation.\033[0m"
 fi
-
