@@ -16,7 +16,7 @@ OrgUnit="IT Department" # Whatever you want it to be
 
 ### Creation of the folder that stores the cert.
 ## Checks if a Path as been defined. If it's the case, creates it.
-## If not, uses current direcory.
+## If not, uses current directory.
 if [ ! -z "${AppPath}" ]
 then
   mkdir -p $AppPath
