@@ -47,9 +47,6 @@ systemctl start libvirtd.service
 
 # Finish
 if [ $? = 0 ]
-then
-  echo -e "\033[32m Successfully installed KVM.\033[0m"
-  notify-send --icon=terminal --app-name=Bash 'KVM/QEMU installed' 'KVM and QEMU have been installed, check your app menu.'
-else
-  echo -e "\033[033m Error in Installation.\033[0m"  
+then echo -e "\033[32m Successfully installed KVM. Check Virtual Machine Manager in you app launcher.\033[0m"
+else echo -e "\033[033m Error in Installation.\033[0m"  
 fi
