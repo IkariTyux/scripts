@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ "$USER" != root ]; 
+if [ "$USER" == root ]; 
 then 
+  echo "You can't run as root. Retry with normal user"
+  exit
+else
   sudo "$0" "$@"
   exit
 fi
@@ -14,7 +17,6 @@ if [ $VirtEnable -gt 0 ]
   then echo -e "\033[32m Virtualisation is enabled\033[0m"
   else echo -e "\033[033m Virtualisation not enabled. Enable it in the BIOS\033[0m" && exit
 fi
-
 
 # Install the required packages
 case $Distro in
@@ -36,17 +38,18 @@ case $Distro in
     ;;
 esac
 
-# Start Libvirtd
-systemctl enable libvirtd.service
+# Configure and start Libvirtd
 echo 'unix_sock_group = "libvirt"
 unix_sock_rw_perms = "0770"' |  tee -a /etc/libvirt/libvirtd.conf > /dev/null
 usermod -aG libvirt $USER
+systemctl enable libvirtd.service
 systemctl start libvirtd.service
 
 # Finish
 if [ $? = 0 ]
-  then echo -e "\033[32m Successfully installed KVM.\033[0m"
-    notify-send --icon=terminal --app-name=Bash 'KVM/QEMU installed' 'KVM and QEMU have been installed, check your app menu.'
-  else echo -e "\033[033m Error in Installation.\033[0m"
-    
+then
+  echo -e "\033[32m Successfully installed KVM.\033[0m"
+  notify-send --icon=terminal --app-name=Bash 'KVM/QEMU installed' 'KVM and QEMU have been installed, check your app menu.'
+else
+  echo -e "\033[033m Error in Installation.\033[0m"  
 fi
