@@ -9,13 +9,10 @@ fi
 # Define Variables
 Distro=$(grep '^ID=' /etc/os-release | cut -d= -f2)
 TLauncherLocation="/usr/local/bin"
-TLauncherFile=$(basename *.jar)
 
 # Getting the jar file ready
-curl -L https://tlauncher.org/jar -o tmp.zip
-unzip -j -o tmp.zip -d $TLauncherLocation
+curl -L https://dl2.tlauncher.org/f.php?f=files%2Fstarter-core-1.24-v1.jar -o tlauncher.jar 
 mv $TLauncherLocation/$TLauncherFile $TLauncherLocation/tlauncher.jar
-rm -f tmp.zip $TLauncherLocation/README-EN.txt $TLauncherLocation/README-RUS.txt
 
 # Installing Java
 case $Distro in
