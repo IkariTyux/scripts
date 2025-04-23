@@ -11,8 +11,8 @@ Distro=$(grep '^ID=' /etc/os-release | cut -d= -f2)
 TLauncherLocation="/usr/local/bin"
 
 # Getting the jar file ready
-curl -L https://dl2.tlauncher.org/f.php?f=files%2Fstarter-core-1.24-v1.jar -o tlauncher.jar 
-mv $TLauncherLocation/$TLauncherFile $TLauncherLocation/tlauncher.jar
+curl -Ls https://dl2.tlauncher.org/f.php?f=files%2Fstarter-core-1.24-v1.jar -o tlauncher.jar 
+mv tlauncher.jar $TLauncherLocation/tlauncher.jar
 
 # Installing Java
 case $Distro in
